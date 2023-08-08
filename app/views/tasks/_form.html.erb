@@ -1,0 +1,17 @@
+<div class="container">
+  <% @task.errors.full_messages.each do |msg| %>
+    <p class='text-danger'><%= msg %></p>
+  <% end %>
+  <%= form_with model: @task do |f| %>
+    <%= f.label :title %>
+    <%= f.text_field :title, class:'form-control' %>
+    <%= f.label :details %>
+    <%= f.text_field :details, class:'form-control' %>
+    <%= f.check_box :completed if @task.id %>
+    <%= f.label :completed if @task.id %>
+    <div>
+      <%= f.submit class:'btn btn-primary mt-2' %>
+    </div>
+  <% end %>
+  <p><%= link_to 'Back to list', tasks_path, class:'btn btn-light mt-2' %></p>
+</div>
